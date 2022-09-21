@@ -129,7 +129,7 @@
         {% elif request.session.status == 'lose' %}
         <div class="box no_win">
             <p>You Lose</p> 
-            <button type="button" class="try_again"><a href="/destroy_session">Try again?</a> </button>
+            <button type="button" class="try_again"><a href="/destroy_session">Try again?</a></button>
         </div>
         {% elif request.session.status == 'win' %}
         <div class="box win">

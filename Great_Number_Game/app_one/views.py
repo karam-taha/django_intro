@@ -12,7 +12,7 @@ def root(request):
 
 def guess(request):
     if request.method == "POST":
-        if request.POST['guess-value']: #Check to see if the user actually entered a valid value
+        if request.POST['guess-value']:
             if int(request.POST['guess-value']) > request.session['random']:
                 request.session['status'] = 'high'
                 request.session['guesses'] += 1
