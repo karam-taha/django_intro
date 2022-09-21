@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 40px;
+        }
+
+        .content{
+            background-color: rgb(255, 255, 157);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin: 0 auto;
+            height: 700px;
+            width: 1000px;
+            padding: 50px;
+            border: 1px solid black;
+            text-align: center;
+        }
+
+        .box{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            color: white;
+            border: 2px solid black;
+            font-weight: bold;
+            text-align: center;
+            height: 300px;
+            width: 500px;
+            margin: 15px 250px;
+        }
+
+        p{
+            font-size: 30px;
+        }
+
+        .no_win{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #CE2818;
+        }
+
+        .win{
+            background-color: #009E12;
+        }
+
+        .try_again{
+            height: 60px;
+            margin-top: 60px;
+            background-color: lightblue;
+            border-radius: 10px;
+            border: none;
+            box-shadow: 1px 2px 2px 2px rgb(34, 50, 56);
+        }
+
+        .no_win p{
+            font-size: 60px;
+        }
+
+        .try_again:active{
+            background-color: rgb(193, 239, 255);
+        }
+
+        a{
+            display: flex;
+            margin: 10px;
+            font-size: 30px;
+            text-decoration: none;
+            color: black;
+        }
+
+        .submit{
+            border: none;
+            border-radius: 10px;
+            background-color: blue;
+            box-shadow: 1px 2px 2px 2px black;
+            color: white;
+            cursor: pointer;
+            margin-top: 10px;
+            width: 100px;
+            height: 50px;
+            font-size: 20px;
+        }
+
+        .submit:active{
+            background-color: rgb(83, 83, 248);
+        }
+
+        .guesses{
+            position: absolute;
+            background-color: red;
+            color: white;
+            top: 680px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            border: 7px double;
+            width: 200px;
+            height: 70px
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1>Welcome to the Great Number Game!</h1>
+        <div>
+            <p>I am thinking of a number between 1 and 100</p>
+            <p>Take a guess!</p>
+        </div>
+        {% if request.session.status == 'low' %}
+        <div class="box no_win">Too Low!</div>
+        {% elif request.session.status == 'high' %}
+        <div class="box no_win">Too high!</div>
+        {% elif request.session.status == 'lose' %}
+        <div class="box no_win">
+            <p>You Lose</p> 
+            <button type="button" class="try_again"><a href="/destroy_session">Try again?</a> </button>
+        </div>
+        {% elif request.session.status == 'win' %}
+        <div class="box win">
+            <p>
+                {{ request.session.random }} was the number! <br>
+                Guess Attempts: {{ request.session.guesses }}
+            </p>
+            <button type="button"><a href="/destroy_session">Play again!</a></button>
+        </div>
+        {% endif %}
+        {% if request.session.status != 'win' and request.session.status != 'lose' %}
+            <form action='guess/' method='post'>
+                {% csrf_token %}
+                <input type="number" name="guess-value" min="1" max="100"><br>
+                <input class="submit" type="submit" value="Submit">
+            </form>
+        {% endif %}
+        <div class="guesses">
+            <p>guesses : {{ request.session.guesses }}/5</p>
+        </div>
+    </div>
+</body>
+</html>
