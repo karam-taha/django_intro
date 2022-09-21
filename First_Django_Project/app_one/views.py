@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponse,redirect
-# from django.http import JsonResponse
+from django.http import JsonResponse
 
 def root(request):
     return redirect("/blogs")
@@ -22,5 +22,5 @@ def edit(request,number):
 def destroy(request,number):
     return redirect("/blogs")
 
-# def json(request):
-#     return JsonResponse({"title": "My first blog", "content": "Lorem, ipsum dolor sit amet consectetur adipisicing elit."})
+def json(request):
+    return JsonResponse({"title": "My first blog", "content": "Lorem, ipsum dolor sit amet consectetur adipisicing elit."})

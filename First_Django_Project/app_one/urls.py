@@ -10,5 +10,5 @@ urlpatterns = [
     path('blogs/<int:number>/',views.show),
     path('blogs/<int:number>/edit/',views.edit),
     path('blogs/<int:number>/delete/',views.destroy),
-    # path('blogs/json/',views.json),
+    path('blogs/json/',views.json),
 ]
