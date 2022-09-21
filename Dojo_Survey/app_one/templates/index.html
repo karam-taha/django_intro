@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 25px;
+        }
+
+        .form{
+            border: 2px solid black;
+            width: 600px;
+            height: 500px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .name{
+            width: 500px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .name input{
+            width: 250px;
+        }
+
+        select{
+            width: 250px;
+        }
+
+        .location{
+            margin-top: 20px;
+            width: 500px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .language{
+            margin-top: 20px;
+            width: 500px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .comment{
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .button{
+            display: flex;
+            justify-content: end;
+            margin-top: 20px;
+        }
+
+        .button input{
+            font-size: 20px;
+            background-color: blue;
+            box-shadow: 2px 2px 1px 1px black;
+            color: white;
+            width: 80px;
+            height: 30px;
+        }
+
+        .checkbox{
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form">
+        <form action='result/' method='post'>
+            {% csrf_token %}
+            <div class="name">
+                Your Name: <input type='text' name='name'>
+            </div>
+            <div class="location">
+                Dojo Location:
+            <select id="location" name="location">
+                <option value="San Jose">San Jose</option>
+                <option value="New York">New York</option>
+                <option value="Florida">Florida</option>
+            </select>
+            </div>
+            <div class="language">
+                Favorite Language:
+            <select id="language" name="language">
+                <option value="Python">Python</option>
+                <option value="JavaScript">JavaScript</option>
+                <option value="C#">C#</option>
+            </select>
+            </div>
+            <div class="comment">
+                Comment (optional):
+                <textarea name="comment" cols="20" rows="4"></textarea>
+            </div>
+            <div class="checkbox">
+                <input type=checkbox name=check value='Agree' required> I agree to continue.
+            </div>
+            <div class="button">
+                <input type='submit' value='Button'>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

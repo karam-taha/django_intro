@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 25px;
+        }
+
+        h1{
+            text-decoration: underline;
+            font-size: 30px;
+        }
+
+        .result{
+            border: 2px solid black;
+            width: 600px;
+            height: 500px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .submission{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .name{
+            margin-top: 20px;
+            width: 500px;
+            display: flex;
+        }
+
+        .name span{
+            margin-left:200px;
+        }
+
+        .location{
+            margin-top: 20px;
+            width: 500px;
+            display: flex;
+        }
+
+        .location span{
+            margin-left:100px;
+        }
+
+        .language{
+            margin-top: 20px;
+            width: 500px;
+            display: flex;
+        }
+
+        .language span{
+            margin-left:45px;
+        }
+
+        .comment{
+            margin-top: 20px;
+            width: 500px;
+            display: flex;
+        }
+
+        .comment span{
+            margin-left:150px;
+        }
+
+        .check{
+            margin-top: 20px;
+            width: 500px;
+            display: flex;
+        }
+
+        .check span{
+            margin-left:190px;
+        }
+
+        .button{
+            display: flex;
+            margin-top: 150px;
+            margin-left: 300px;
+        }
+
+        .button input{
+            font-size: 20px;
+            background-color: blue;
+            box-shadow: 2px 2px 1px 1px black;
+            color: white;
+            width: 90px;
+            height: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="result">
+        <h1>Submitted Info</h1>
+        <div class="submission">
+            <div class="name">
+                <h2>Name:</h2> <span>{{request.POST.name}}</span>
+            </div>
+            <div class="location">
+                <h2>Dojo Location:</h2> <span>{{request.POST.location}}</span>
+            </div>
+            <div class="language">
+                <h2>Favorite Language:</h2> <span>{{request.POST.language}}</span>
+            </div>
+            <div class="comment">
+                <h2>Comment:</h2> <span>{{request.POST.comment}}</span>
+            </div>
+            <div class="button">
+                <form action="\">
+                    <input type='submit' value='Go Back'>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
