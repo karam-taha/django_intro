@@ -6,8 +6,8 @@ def root(request):
         request.session['random'] = random.randint(1, 100)
         request.session['status'] = 'new'
         request.session['guesses'] = 0
-        print('Status This Session:', request.session['status'])
-        print('Random Number This Session:', request.session['random'])
+        print('Status is:', request.session['status'])
+        print('Random Number is', request.session['random'])
     return render(request,"index.html")
 
 def guess(request):
